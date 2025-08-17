@@ -26,6 +26,24 @@ export default function Hero({
     const sectionRef = useRef<HTMLElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // تحديد إذا كان الجهاز موبايل
+    useEffect(() => {
+        const checkIfMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        checkIfMobile();
+        window.addEventListener('resize', checkIfMobile);
+
+        return () => {
+            window.removeEventListener('resize', checkIfMobile);
+        };
+    }, []);
+
+    // تحديد مصدر الصورة حسب نوع الجهاز
+    const currentImageSrc = isMobile ? '/b2.webp' : imageSrc;
 
     useEffect(() => {
         if (!imageRef.current || !sectionRef.current) return;
@@ -41,42 +59,53 @@ export default function Hero({
             isMobile: "(max-width: 768px)",
             isDesktop: "(min-width: 769px)"
         }, (context) => {
-            const { isMobile } = context.conditions as { isMobile: boolean; isDesktop: boolean };
-            const headerHeight = getHeaderHeight();
+            const { isMobile, isDesktop } = context.conditions as { isMobile: boolean; isDesktop: boolean };
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: isMobile ? 'top top' : `top+=${headerHeight} top+=${headerHeight}`,
-                    end: `+=${window.innerHeight - (isMobile ? 0 : headerHeight)}`,
-                    scrub: 1,
-                    pin: true,
-                    pinSpacing: pinSpacing,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                    refreshPriority: -1,
-                    markers: false,
-                    onRefresh: () => {
-                        const newHeaderHeight = getHeaderHeight();
+            // فقط تطبيق الانيميشن في شاشات سطح المكتب
+            if (isDesktop) {
+                const headerHeight = getHeaderHeight();
 
-                        if (tl.scrollTrigger) {
-                            tl.scrollTrigger.vars.start = isMobile ? 'top top' : `top+=${newHeaderHeight} top+=${newHeaderHeight}`;
-                            tl.scrollTrigger.vars.end = `+=${window.innerHeight - (isMobile ? 0 : newHeaderHeight)}`;
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: `top+=${headerHeight} top+=${headerHeight}`,
+                        end: `+=${window.innerHeight - headerHeight}`,
+                        scrub: 1,
+                        pin: true,
+                        pinSpacing: pinSpacing,
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true,
+                        refreshPriority: -1,
+                        markers: false,
+                        onRefresh: () => {
+                            const newHeaderHeight = getHeaderHeight();
+
+                            if (tl.scrollTrigger) {
+                                tl.scrollTrigger.vars.start = `top+=${newHeaderHeight} top+=${newHeaderHeight}`;
+                                tl.scrollTrigger.vars.end = `+=${window.innerHeight - newHeaderHeight}`;
+                            }
                         }
                     }
-                }
-            });
+                });
 
-            tl.to(imageRef.current, {
-                opacity: 0,
-                duration: animationDuration,
-                ease: 'power2.inOut'
-            });
+                tl.to(imageRef.current, {
+                    opacity: 0,
+                    duration: animationDuration,
+                    ease: 'power2.inOut'
+                });
 
-            return () => {
-                tl.scrollTrigger?.kill();
-                tl.kill();
-            };
+                return () => {
+                    tl.scrollTrigger?.kill();
+                    tl.kill();
+                };
+            }
+
+            // في شاشات الموبايل، نتأكد من أن الصورة مرئية
+            if (isMobile && imageRef.current) {
+                gsap.set(imageRef.current, { opacity: 1 });
+            }
+
+            return () => { };
         });
 
         const handleResize = () => {
@@ -85,8 +114,11 @@ export default function Hero({
             }, 100);
         };
 
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('orientationchange', handleResize);
+        // تطبيق event listeners فقط في شاشات سطح المكتب
+        if (window.innerWidth > 768) {
+            window.addEventListener('resize', handleResize);
+            window.addEventListener('orientationchange', handleResize);
+        }
 
         return () => {
             mm.kill();
@@ -122,7 +154,7 @@ export default function Hero({
                 <div ref={imageRef} className={styles.background2}>
                     <Image
                         className={styles.background2Img}
-                        src={imageSrc}
+                        src={currentImageSrc}
                         alt="background"
                         fill
                         priority
