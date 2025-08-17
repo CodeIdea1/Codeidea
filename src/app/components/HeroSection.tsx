@@ -27,6 +27,7 @@ export default function Hero({
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
     // تحديد إذا كان الجهاز موبايل
     useEffect(() => {
@@ -41,6 +42,27 @@ export default function Hero({
             window.removeEventListener('resize', checkIfMobile);
         };
     }, []);
+
+    // تأكيد أن الصورة مرئية في الموبايل بدون GSAP
+    useEffect(() => {
+        if (isMobile && imageRef.current) {
+            imageRef.current.style.opacity = '1';
+        }
+    }, [isMobile]);
+
+    // تحميل الفيديو بتأخير في الموبايل لتحسين الأداء
+    useEffect(() => {
+        if (isMobile) {
+            // تأخير تحميل الفيديو في الموبايل
+            const timer = setTimeout(() => {
+                setShouldLoadVideo(true);
+            }, 1000); // تأخير ثانية واحدة
+
+            return () => clearTimeout(timer);
+        } else {
+            setShouldLoadVideo(true);
+        }
+    }, [isMobile]);
 
     // تحديد مصدر الصورة حسب نوع الجهاز
     const currentImageSrc = isMobile ? '/b2.webp' : imageSrc;
@@ -128,13 +150,13 @@ export default function Hero({
     }, [animationDuration, pinSpacing]);
 
     const handleVideoHover = () => {
-        if (videoRef.current) {
+        if (videoRef.current && !isMobile) { // تعطيل التشغيل التلقائي في الموبايل
             videoRef.current.play();
         }
     };
 
     const handleVideoLeave = () => {
-        if (videoRef.current) {
+        if (videoRef.current && !isMobile) {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
         }
@@ -181,16 +203,36 @@ export default function Hero({
                     onMouseLeave={handleVideoLeave}
                     onClick={handleVideoClick}
                 >
-                    <video
-                        ref={videoRef}
-                        className={styles.video}
-                        muted
-                        loop
-                        playsInline
-                    >
-                        <source src={videoSrc} type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
+                    {shouldLoadVideo ? (
+                        <video
+                            ref={videoRef}
+                            className={styles.video}
+                            muted
+                            loop
+                            playsInline
+                            // ✅ في الموبايل ما يتحملش إلا عند النقر
+                            preload={isMobile ? "none" : "metadata"}
+                            // ✅ صورة مصغرة للموبايل فقط
+                            poster={isMobile ? "/video-thumbnail.jpg" : undefined}
+                        >
+                            <source src={videoSrc} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+
+                    ) : (
+                        // صورة placeholder أثناء التحميل
+                        <div className={styles.videoPlaceholder} style={{
+                            width: '100%',
+                            height: '100%',
+                            background: 'linear-gradient(45deg, #f0f0f0, #e0e0e0)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: '#999'
+                        }}>
+                            Loading...
+                        </div>
+                    )}
                     <div className={styles.playButton}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M8 5v14l11-7z" fill="white" />
