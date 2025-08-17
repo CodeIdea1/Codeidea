@@ -25,7 +25,7 @@ body {
   padding: 0;
   margin: 0;
   -webkit-tap-highlight-color: transparent;
-
+  cursor: none !important;
 }
 
 
@@ -39,7 +39,52 @@ a {
 
 
 
-/* CSS Variables للخطوط */
+
+a,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+textarea,
+video,
+[role="button"],
+.interactive {
+  cursor: none !important;
+}
+
+a:hover,
+button:hover,
+input:hover,
+textarea:hover,
+select:hover,
+video:hover,
+[role="button"]:hover,
+.interactive:hover {
+  cursor: none !important;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+video:focus {
+  outline: none;
+  cursor: none !important;
+}
+
+video {
+  transition: all 0.3s ease;
+}
+
+video:hover {
+  filter: brightness(1.1);
+}
+
+
+
+
 :root {
   --font-inter: 'Inter', sans-serif;
   --font-berkshire-swash: 'Berkshire Swash', cursive;
@@ -57,16 +102,90 @@ a {
 
 
 
-/* globals.css */
 
-/* خط Playfair Display لجميع العناصر التي لديها كلاس secondTitle */
 .secondTitle {
   font-family: var(--font-playfair-display), Georgia, 'Times New Roman', serif;
 }
 
-/* خط Berkshire Swash لجميع العناصر التي لديها كلاس title */
 .title {
   font-family: var(--font-berkshire-swash), cursive;
 }
 
-/* باقي النصوص تستخدم الخط الأساسي Inter (محدد في body في layout) */
+
+
+
+
+
+
+
+
+
+
+.swal2-popup {
+  font-family: 'Arial', sans-serif !important;
+  border-radius: 15px !important;
+  z-index: 999999999999999 !important;
+  position: relative;
+}
+
+.swal2-title {
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+}
+
+.swal2-content {
+  font-size: 1rem !important;
+}
+
+@media (max-width: 768px) {
+  .custom-swal-popup {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    width: 90% !important;
+    max-width: 400px !important;
+  }
+
+  .swal2-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 999999999999999 !important;
+  }
+
+  .swal2-popup.swal2-toast {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    max-width: 400px !important;
+    border-radius: 15px !important;
+  }
+
+  .swal2-title {
+    font-size: 1.3rem !important;
+  }
+
+  .swal2-content {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .swal2-popup.swal2-toast {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    transform: none !important;
+    width: auto !important;
+    max-width: 350px !important;
+  }
+}

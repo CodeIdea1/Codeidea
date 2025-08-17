@@ -117,7 +117,7 @@ export default function Hero({
     };
 
     return (
-        <section ref={sectionRef} className={styles.heroSection}>
+        <section ref={sectionRef} className={styles.heroSection} id='hero'>
             <div className={styles.container}>
                 <div ref={imageRef} className={styles.background2}>
                     <Image
@@ -170,17 +170,6 @@ export default function Hero({
             {isVideoOpen && (
                 <div className={styles.videoModal} onClick={closeVideoModal}>
                     <div className={styles.videoModalContent} onClick={(e) => e.stopPropagation()}>
-                        <button
-                            type="button"
-                            className={styles.closeButton}
-                            onClick={closeVideoModal}
-                            aria-label="Close video modal"
-                            title="Close video"
-                        >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2" />
-                            </svg>
-                        </button>
                         <video
                             className={styles.modalVideo}
                             controls

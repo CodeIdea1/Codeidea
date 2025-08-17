@@ -101,6 +101,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    position: relative;
 }
 
 .playButton {
@@ -139,6 +140,7 @@
     padding: 20px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    z-index: 99999 !important;
 }
 
 .videoModalContent {
@@ -158,8 +160,8 @@
 
 .closeButton {
     position: absolute;
-    top: -40px;
-    right: 0;
+    top: -10px;
+    left: -5px;
     background: rgba(255, 255, 255, 0.1);
     border: none;
     color: white;

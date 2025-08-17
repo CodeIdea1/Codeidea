@@ -172,6 +172,7 @@
     z-index: 1000;
     width: 100%;
     padding: 0 16px;
+    z-index: 999 !important;
 }
 
 .mobileContainer {
@@ -317,6 +318,7 @@
 
     .emailInput::placeholder {
         color: #303030b7;
+        background-color: transparent;
     }
 
 

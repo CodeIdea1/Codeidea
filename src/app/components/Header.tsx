@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { useState, ChangeEvent, KeyboardEvent, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Swal from 'sweetalert2';
 import styles from '../styles/header.module.css';
-import clsx from 'clsx'
+import clsx from 'clsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,13 +18,76 @@ export default function Header() {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const handleSubscribe = (): void => {
-        if (email.trim()) {
-            console.log('Subscribe email:', email);
-            setEmail('');
-            alert('تم الاشتراك بنجاح!');
+    const isValidEmail = (email: string): boolean => {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailRegex.test(email)) {
+            return false;
         }
+
+        const validExtensions = ['.com', '.net', '.org'];
+
+        return validExtensions.some(ext => email.toLowerCase().endsWith(ext));
     };
+
+    const handleSubscribe = (): void => {
+        if (!email.trim()) {
+            Swal.fire({
+                title: 'Missing Information',
+                text: 'Please enter your email before subscribing',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#069ca7',
+                showCloseButton: true,
+                background: '#fff',
+                color: '#333'
+            });
+            return;
+        }
+
+        if (!isValidEmail(email.trim())) {
+            Swal.fire({
+                title: 'Invalid Email',
+                text: 'Please enter a valid email address (e.g., example@gmail.com)',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#069ca7',
+                showCloseButton: true,
+                background: '#fff',
+                color: '#333'
+            });
+            return;
+        }
+
+        console.log('Subscribe email:', email);
+        setEmail('');
+
+        Swal.fire({
+            title: 'Success!',
+            text: 'Successfully subscribed to newsletter',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true,
+            toast: true,
+            position: 'top-end',
+            background: '#069ca7',
+            color: '#fff',
+            iconColor: '#fff'
+        });
+    };
+
+
+
+
+
+
+
+
+
+
+
+
 
     const handleEmailChange = (e: ChangeEvent<HTMLInputElement>): void => {
         setEmail(e.target.value);
@@ -100,7 +164,9 @@ export default function Header() {
                             <a href="#" className={`${styles.navLink} ${styles.active}`}>Home</a>
                             <a href="#" className={styles.navLink}>Product</a>
                             <a href="#" className={styles.navLink}>FAQ</a>
-                            <button className={styles.orderBtn}>GET IN TOUCH</button>
+                            <a href="#footer" className={styles.orderBtn}>
+                                GET IN TOUCH
+                            </a>
                         </div>
 
                         <hr className={styles.hrLine} />

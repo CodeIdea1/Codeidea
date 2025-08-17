@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { Inter, Berkshire_Swash, Playfair_Display } from 'next/font/google';
 import "./globals.css";
 import Header from "./components/Header";
+import CustomCursor from "./CustomCursor/CustomCursor";
 
-// خط أساسي للموقع (لجميع النصوص العادية)
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 });
 
-// خط للعناصر التي لديها كلاس title
 const berkshireSwash = Berkshire_Swash({
   weight: '400',
   subsets: ['latin'],
@@ -18,7 +18,6 @@ const berkshireSwash = Berkshire_Swash({
   display: 'swap',
 });
 
-// خط للعناصر التي لديها كلاس secondTitle
 const playfairDisplay = Playfair_Display({
   weight: ['400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
@@ -42,6 +41,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         {children}
+        <CustomCursor />
+
       </body>
     </html>
   );
