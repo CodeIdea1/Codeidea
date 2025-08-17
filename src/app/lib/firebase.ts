@@ -1,6 +1,6 @@
 // lib/firebase.ts
-import { initializeApp, getApps } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDXh4k5q0wDAii3y5ia5cAtZd37qv0Lyr4",
@@ -12,6 +12,8 @@ const firebaseConfig = {
   appId: "1:522567476469:web:7884e4c86273d8c22951bc"
 };
 
+// Initialize Firebase
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0];
-export const db = getFirestore(app);
+// Get Realtime Database instance
+export const database = getDatabase(app);

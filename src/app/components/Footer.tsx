@@ -4,19 +4,17 @@ import styles from '../styles/footer.module.css';
 import { FaInstagram, FaLinkedin, FaVimeoV } from "react-icons/fa";
 import clsx from 'clsx';
 
-// ✅ Firebase
-import { db } from '../lib/firebase';
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+// ✅ Firebase Realtime Database
+import { database } from '../lib/firebase';
+import { ref, push } from "firebase/database";
 
 const Footer: React.FC = () => {
     const contactSectionRef = useRef<HTMLDivElement | null>(null);
 
-    // Scroll لجزء الفورم
     const scrollToForm = () => {
         contactSectionRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    // ✅ إرسال البيانات لـ Firestore
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
@@ -27,15 +25,16 @@ const Footer: React.FC = () => {
             email: formData.get("email") as string,
             contact: formData.get("contact") as string,
             project: formData.get("project") as string,
-            createdAt: Timestamp.now(),
+            createdAt: new Date().toISOString(),
         };
 
         try {
-            await addDoc(collection(db, "contacts"), data);
+            const contactsRef = ref(database, "contacts");
+            await push(contactsRef, data);
             alert("✅ تم إرسال بياناتك بنجاح!");
             form.reset();
         } catch (err) {
-            console.error("Error adding document: ", err);
+            console.error("Error sending data: ", err);
             alert("❌ حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
         }
     };
@@ -96,35 +95,11 @@ const Footer: React.FC = () => {
                 <div ref={contactSectionRef} className={styles.contactSection}>
                     <h4 className={styles.newsletterTitle}>Get in Touch</h4>
                     <form onSubmit={handleSubmit} className={styles.contactForm}>
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Your Name"
-                            className={styles.inputField}
-                            required
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Your Email"
-                            className={styles.inputField}
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="contact"
-                            placeholder="Your Contact Details"
-                            className={styles.inputField}
-                        />
-                        <textarea
-                            name="project"
-                            placeholder="Project details (website type, features, business info...)"
-                            className={styles.textareaField}
-                            required
-                        />
-                        <button type="submit" className={styles.submitButton}>
-                            Submit
-                        </button>
+                        <input type="text" name="name" placeholder="Your Name" className={styles.inputField} required />
+                        <input type="email" name="email" placeholder="Your Email" className={styles.inputField} required />
+                        <input type="text" name="contact" placeholder="Your Contact Details" className={styles.inputField} />
+                        <textarea name="project" placeholder="Project details (website type, features, business info...)" className={styles.textareaField} required />
+                        <button type="submit" className={styles.submitButton}>Submit</button>
                     </form>
                 </div>
 
