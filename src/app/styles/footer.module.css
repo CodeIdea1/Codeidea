@@ -189,50 +189,13 @@
     color: #ccc;
 }
 
-.newsletterForm {
-    display: flex;
-    gap: 0;
-    max-width: 400px;
-}
 
-.emailInput {
-    flex: 1;
-    padding: 12px 20px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-right: none;
-    border-radius: 25px 0 0 25px;
-    background: transparent;
-    color: white;
-    font-size: 14px;
-    outline: none;
-}
 
-.emailInput::placeholder {
-    color: #ccc;
-    letter-spacing: 1px;
-}
 
-.emailInput:focus {
-    border-color: #069ca7;
-}
 
-.updateButton {
-    background: white;
-    color: #2d1810;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 0 25px 25px 0;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
 
-.updateButton:hover {
-    background: #069ca7;
-    color: white;
-}
+
+
 
 .bottomSection {
     display: flex;
@@ -374,23 +337,17 @@
 
 
 
-
-
-
-
-
-/*  */
-
-
-
-
-
-
-/*  */
-/* أضف هذه الستايلات إلى ملف styles/footer.module.css */
-
-/* قسم نموذج التواصل */
 .contactSection {
+    width: 100%;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+    z-index: 99999999999 !important;
+    position: relative;
+}
+
+
+/* .contactSection {
     width: 100%;
     padding: 2rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -526,7 +483,6 @@
     color: #ef4444;
 }
 
-/* الاستجابة للشاشات الصغيرة */
 @media (max-width: 768px) {
     .formRow {
         flex-direction: column;
@@ -552,6 +508,7 @@
     .formInput,
     .formTextarea {
         font-size: 16px;
-        /* منع التكبير في iOS */
-    }
 }
+}
+
+*/
