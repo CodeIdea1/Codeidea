@@ -1,0 +1,785 @@
+.sectionsContainer {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.cardsWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    position: absolute;
+    width: 95vw;
+    height: 95vh;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    will-change: transform;
+    border-radius: 30px;
+}
+
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.cardContent {
+    padding: 1rem 3rem;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.cardTitle {
+    max-width: 500px;
+    letter-spacing: 2px;
+    font-size: 55px;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    z-index: 9999;
+    font-style: italic;
+}
+
+
+.cardNumber {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 95vw;
+        height: 90vh;
+    }
+
+    .cardContent {
+        padding: 2rem 1.5rem;
+    }
+
+    .cardTitle {
+        margin-bottom: 1.5rem;
+    }
+
+    .cardDescription {
+        margin-bottom: 2rem;
+    }
+
+    .cardNumber {
+        top: 2rem;
+        right: 2rem;
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 98vw;
+        height: 95vh;
+    }
+
+    .cardContent {
+        padding: 1.5rem 1rem;
+    }
+
+    .cardNumber {
+        font-size: 4rem;
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+
+
+
+
+
+.video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    height: 100% !important;
+    background-color: black;
+}
+
+.card:first-of-type .cardContent::after {
+    content: '';
+    position: absolute;
+    border-radius: 25px;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.608), transparent);
+}
+
+.cardContent {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardFive {
+    justify-content: start;
+}
+
+.features {
+    max-width: 660px;
+    display: flex;
+    justify-content: space-between;
+    gap: 0 1rem;
+    z-index: 9999;
+    margin-bottom: 30px;
+
+}
+
+.featureItem {
+    flex: 1;
+    color: white;
+}
+
+.featureItem h3 {
+    font-size: 1.2rem;
+    margin: .6rem 0 .8rem 0;
+}
+
+.featureItem p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    width: 80%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cardTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    gap: 2rem;
+}
+
+.topRow {
+    display: flex;
+    gap: .7rem;
+    margin-bottom: 50px;
+}
+
+.item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 13px;
+    margin-bottom: 1rem;
+}
+
+.itemImage {
+    width: 100%;
+    border-radius: 13px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+}
+
+.visitText {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+.imageContainer:hover .overlay {
+    opacity: 1;
+}
+
+.imageContainer:hover .itemImage {
+    transform: scale(1.05);
+}
+
+.itemInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.itemInfo h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(26, 26, 26);
+}
+
+.itemInfo p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.bottomRow {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bigTitle {
+    font-size: 53px;
+    font-weight: 400;
+    line-height: 1;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.876);
+}
+
+.bottomRowDescription {
+    max-width: 440px;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+.cardThree {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 4rem;
+    border-radius: 16px;
+}
+
+.leftSection {
+    flex: 1;
+}
+
+.rightSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    max-width: 300px;
+    font-size: 53px;
+    font-weight: 400;
+    line-height: 1;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.876);
+}
+
+.description {
+    font-size: 1.2rem;
+    opacity: 1 !important;
+    margin: 20px 0 70px 0 !important;
+    width: 400px;
+}
+
+.iconGrid {
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.3rem;
+
+}
+
+.iconBox {
+    background-color: #e9e0db;
+    padding: 1rem;
+    border-radius: 12px;
+    width: 95px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconBox svg {
+    color: #4b4b4b;
+    width: 60px;
+    height: 60px;
+}
+
+
+.image {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+
+
+
+.cardWithBackground {
+    width: 100vw;
+    height: 100vh;
+}
+
+.cardFour {
+    background: url('/snapedit_1754717939784.webp');
+    background-size: cover;
+    background-position: top;
+    position: relative;
+}
+
+
+
+.cardFourContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 90%;
+    height: 77%;
+    margin: auto;
+    color: white;
+}
+
+.cardFourTitle {
+    z-index: 999;
+    font-weight: 400;
+    font-size: 55px;
+    font-style: italic;
+}
+
+.cardFourDescription {
+    color: white;
+    width: 400px;
+    z-index: 999;
+    margin-top: 20px;
+
+}
+
+.cardFourDescription p {
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+.cardFive .features .featureItem {
+    color: rgba(0, 0, 0, 0.789);
+}
+
+.cardFive {
+    align-items: center;
+    margin-top: 70px;
+}
+
+
+.phonesContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap !important;
+    width: 100%;
+    min-width: 580px;
+}
+
+.flexCenter {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+}
+
+.phone1,
+.phone2,
+.phone3 {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+}
+
+.phone2 {
+    width: 250px;
+    position: relative;
+    z-index: 99999 !important;
+    flex-shrink: 0 !important;
+}
+
+.phone1 {
+    margin-right: -36px;
+    margin-bottom: 3px;
+}
+
+.phone3 {
+    margin-left: -30px;
+    width: 191px;
+    margin-bottom: 3px;
+}
+
+
+
+
+.cardFiveFeatures {
+    flex-direction: column;
+    margin-top: 70px;
+}
+
+.cardFiveFeatures .featureItem {
+    color: rgb(53, 53, 53);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.iconColumn {
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.textColumn {
+    flex: 1;
+}
+
+.textColumn h3 {
+    margin: 0 0 8px 0;
+}
+
+.textColumn p {
+    margin: 0;
+}
+
+
+@media (min-width: 768px) {
+
+    .imageContainer {
+        border-radius: 3px;
+    }
+
+    .itemImage {
+        border-radius: 3px;
+    }
+
+    .phonesContainer {
+        min-width: 600px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .phonesContainer {
+        min-width: 650px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .phonesContainer {
+        min-width: 700px;
+    }
+}
+
+@media (max-width: 580px) {
+    .phonesContainer {
+        min-width: 400px;
+        justify-content: flex-start;
+        padding-left: 10px;
+    }
+
+    .phone1,
+    .phone2,
+    .phone3 {
+        width: 120px;
+    }
+
+    .phone2 {
+        width: 150px;
+    }
+
+    .phone3 {
+        width: 110px;
+    }
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+    .cardFour {
+        padding: 15px !important;
+        width: 100%;
+        background-color: black;
+    }
+
+    .cardFour::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .cardFourDescription {
+        width: 100%;
+    }
+
+    .cardFour {
+        background: url('/Untitled-1.webp');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 70vh;
+        width: 100%;
+    }
+
+    .cardFourContent {
+        flex-direction: column;
+        justify-content: start;
+        width: 97%;
+        height: 90%;
+    }
+
+    .description {
+        margin-top: 0 !important;
+        width: 90%;
+    }
+
+    .itemInfo {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .itemInfo h4 {
+        margin-bottom: 10px;
+    }
+
+    .card:first-of-type .cardContent::after {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    }
+
+    .cardOne {
+        height: 300px;
+    }
+
+    .cardOne .cardTitle,
+    .videoFeatures {
+        display: none;
+    }
+
+    .sectionsContainer {
+        height: auto !important;
+        position: relative !important;
+    }
+
+    .cardsWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem .5rem;
+    }
+
+    .card {
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: hidden;
+        border-radius: 17px;
+    }
+
+    .cardContent {
+        padding: 0px 5px;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .cardTwo {
+        flex-direction: column-reverse;
+        margin-top: 30px;
+    }
+
+    .cardTwo .topRow {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .cardTwo .item {
+        width: 100%;
+    }
+
+    .cardTwo .bottomRow {
+        margin-top: 2rem;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .cardThree {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .leftSection {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .cardThree .leftSection,
+    .cardThree .rightSection {
+        width: 100%;
+    }
+
+    .cardThree .rightSection {
+        margin-top: 2rem;
+    }
+
+    .iconGrid {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .cardFive {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .phonesContainer {
+        margin-bottom: 2rem;
+        justify-content: center;
+        gap: 1rem;
+        margin-left: -18px;
+    }
+
+    .phone1,
+    .phone2,
+    .phone3 {
+        width: 100px !important;
+        height: auto !important;
+    }
+
+    .phone2 {
+        width: 130px !important;
+    }
+
+    .phone3 {
+        margin-left: -44;
+        width: 97px !important;
+    }
+
+    .cardFiveFeatures {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .cardFiveFeatures .featureItem {
+        color: rgb(53, 53, 53);
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 24px;
+        text-align: start;
+    }
+
+    .featureItem p {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .cardTitle,
+    .bigTitle,
+    .title,
+    .cardFourTitle {
+        font-size: 1.8rem !important;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .video {
+        height: 200px;
+        object-fit: cover;
+        border-radius: 3px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .sectionsContainer {
+        height: auto !important;
+        position: relative !important;
+    }
+
+    .cardsWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .card {
+        position: relative !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+}

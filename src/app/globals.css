@@ -1,0 +1,72 @@
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url('/Aesthetic background blurred natural light shadow overlay with window shadow during golden hour _ Premium Photo.jpeg');
+  background-color: #ffffff;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x: hidden;
+  scroll-behavior: smooth !important;
+}
+
+@media (max-width: 800px) {
+  body {
+    background-image: url('/Untitled-5.webp');
+    background-color: #ffffff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+
+
+
+/* CSS Variables للخطوط */
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-berkshire-swash: 'Berkshire Swash', cursive;
+}
+
+
+.title {
+  font-family: var(--font-berkshire-swash);
+}
+
+
+.font-body {
+  font-family: var(--font-inter);
+}
+
+
+
+/* globals.css */
+
+/* خط Playfair Display لجميع العناصر التي لديها كلاس secondTitle */
+.secondTitle {
+  font-family: var(--font-playfair-display), Georgia, 'Times New Roman', serif;
+}
+
+/* خط Berkshire Swash لجميع العناصر التي لديها كلاس title */
+.title {
+  font-family: var(--font-berkshire-swash), cursive;
+}
+
+/* باقي النصوص تستخدم الخط الأساسي Inter (محدد في body في layout) */

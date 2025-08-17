@@ -1,0 +1,244 @@
+.fallingLeaves {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.leaf {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-image: url('/leaf.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    filter: blur(7px);
+    -webkit-filter: blur(7px);
+}
+
+.leaf1 {
+    left: 10%;
+    animation: fall-1 8s infinite;
+    animation-delay: 0s;
+    width: 90px;
+    height: 90px;
+}
+
+.leaf2 {
+    left: 30%;
+    animation: fall-2 10s infinite;
+    animation-delay: 2s;
+    width: 100px;
+    height: 100px;
+}
+
+.leaf3 {
+    left: 50%;
+    animation: fall-3 7s infinite;
+    animation-delay: 1s;
+    width: 110px;
+    height: 110px;
+}
+
+.leaf4 {
+    left: 70%;
+    animation: fall-4 9s infinite;
+    animation-delay: 3s;
+    width: 105px;
+    height: 105px;
+}
+
+@keyframes fall-1 {
+    0% {
+        top: -100px;
+        transform: translateX(0px) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    25% {
+        transform: translateX(30px) rotate(45deg);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateX(-20px) rotate(90deg);
+        opacity: 0.6;
+    }
+
+    75% {
+        transform: translateX(25px) rotate(135deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        top: 100vh;
+        transform: translateX(-10px) rotate(180deg);
+        opacity: 0.3;
+    }
+}
+
+@keyframes fall-2 {
+    0% {
+        top: -100px;
+        transform: translateX(0px) rotate(15deg);
+        opacity: 0.7;
+    }
+
+    20% {
+        transform: translateX(-35px) rotate(60deg);
+        opacity: 0.6;
+    }
+
+    40% {
+        transform: translateX(40px) rotate(105deg);
+        opacity: 0.6;
+    }
+
+    60% {
+        transform: translateX(-25px) rotate(150deg);
+        opacity: 0.5;
+    }
+
+    80% {
+        transform: translateX(30px) rotate(195deg);
+        opacity: 0.4;
+    }
+
+    100% {
+        top: 100vh;
+        transform: translateX(-15px) rotate(240deg);
+        opacity: 0.2;
+    }
+}
+
+@keyframes fall-3 {
+    0% {
+        top: -100px;
+        transform: translateX(0px) rotate(30deg);
+        opacity: 0.8;
+    }
+
+    16% {
+        transform: translateX(45px) rotate(75deg);
+        opacity: 0.7;
+    }
+
+    33% {
+        transform: translateX(-30px) rotate(120deg);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translateX(35px) rotate(165deg);
+        opacity: 0.5;
+    }
+
+    66% {
+        transform: translateX(-40px) rotate(210deg);
+        opacity: 0.4;
+    }
+
+    83% {
+        transform: translateX(25px) rotate(255deg);
+        opacity: 0.3;
+    }
+
+    100% {
+        top: 100vh;
+        transform: translateX(-20px) rotate(300deg);
+        opacity: 0.2;
+    }
+}
+
+@keyframes fall-4 {
+    0% {
+        top: -100px;
+        transform: translateX(0px) rotate(45deg);
+        opacity: 0.6;
+    }
+
+    30% {
+        transform: translateX(-40px) rotate(90deg);
+        opacity: 0.5;
+    }
+
+    60% {
+        transform: translateX(35px) rotate(135deg);
+        opacity: 0.4;
+    }
+
+    100% {
+        top: 100vh;
+        transform: translateX(-25px) rotate(225deg);
+        opacity: 0.2;
+    }
+}
+
+@keyframes fall-5 {
+    0% {
+        top: -100px;
+        transform: translateX(0px) rotate(60deg);
+        opacity: 0.7;
+    }
+
+    22% {
+        transform: translateX(50px) rotate(105deg);
+        opacity: 0.6;
+    }
+
+    44% {
+        transform: translateX(-35px) rotate(150deg);
+        opacity: 0.5;
+    }
+
+    66% {
+        transform: translateX(40px) rotate(195deg);
+        opacity: 0.4;
+    }
+
+    88% {
+        transform: translateX(-30px) rotate(240deg);
+        opacity: 0.3;
+    }
+
+    100% {
+        top: 100vh;
+        transform: translateX(20px) rotate(285deg);
+        opacity: 0.2;
+    }
+}
+
+@media (max-width: 768px) {
+    .leaf {
+        width: 80px;
+        height: 80px;
+        opacity: .2;
+    }
+
+    .leaf1 {
+        width: 75px;
+        height: 75px;
+    }
+
+    .leaf2 {
+        width: 70px;
+        height: 70px;
+    }
+
+    .leaf3 {
+        width: 85px;
+        height: 85px;
+    }
+
+    .leaf4 {
+        width: 70px;
+        height: 70px;
+    }
+}

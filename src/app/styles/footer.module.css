@@ -1,0 +1,365 @@
+.footer {
+    padding: 60px 40px 40px 40px;
+    color: white;
+    background: url('/footer-background_1.webp');
+    background-size: cover;
+    position: relative;
+}
+
+.container {
+    width: 88%;
+    margin: auto;
+}
+
+.footer::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.844), transparent);
+}
+
+.orderSection,
+.footerContent,
+.newsletterSection,
+.bottomSection {
+    z-index: 99999 !important;
+    position: relative;
+}
+
+.orderSection {
+    text-align: center;
+    margin-bottom: 80px;
+    z-index: 9999;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    text-align: center;
+    font-size: 88px;
+    color: #069ca7;
+}
+
+.description {
+    font-size: 22px;
+}
+
+.orderButton {
+    width: 300px;
+    background: #069ca7;
+    color: white;
+    border: none;
+    padding: 16px 60px;
+    border-radius: 10px;
+    font-size: 16px;
+    margin: 50px 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.orderButton:hover {
+    background: #09bbc8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px #069ca7;
+}
+
+.shippingText {
+    color: #ccc;
+    font-size: 14px;
+    margin: 0;
+}
+
+.footerContent {
+    width: 88%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 60px;
+    align-items: start;
+}
+
+.logoSection {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+
+
+
+
+.companyName {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.companyType {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.linksSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.columnTitle {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.navigationColumn .linksList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigationColumn .linksList li {
+    margin-bottom: 5px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #069ca7;
+}
+
+.aboutText {
+    color: white;
+    font-size: 20px;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 15px;
+}
+
+.socialIcon {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+    background: #069ca7;
+    transform: translateY(-2px);
+}
+
+.newsletterSection {
+    margin-bottom: 60px;
+}
+
+.newsletterTitle {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.newsletterForm {
+    display: flex;
+    gap: 0;
+    max-width: 400px;
+}
+
+.emailInput {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-right: none;
+    border-radius: 25px 0 0 25px;
+    background: transparent;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.emailInput::placeholder {
+    color: #ccc;
+    letter-spacing: 1px;
+}
+
+.emailInput:focus {
+    border-color: #069ca7;
+}
+
+.updateButton {
+    background: white;
+    color: #2d1810;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 0 25px 25px 0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.updateButton:hover {
+    background: #069ca7;
+    color: white;
+}
+
+.bottomSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.copyright p {
+    color: #ccc;
+    font-size: 12px;
+    margin: 0;
+}
+
+.legalLinks {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.legalLink {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+.legalLink:hover {
+    color: white;
+}
+
+.separator {
+    color: #ccc;
+    font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+    .footerContent {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .linksSection {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .footer {
+        padding: 40px 20px 30px 20px;
+    }
+
+    .footerContent {
+        gap: 30px;
+    }
+
+    .linksSection {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .orderButton {
+        padding: 14px 40px;
+        font-size: 14px;
+    }
+
+    .bottomSection {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .newsletterForm {
+        max-width: 100%;
+    }
+
+    .companyName,
+    .companyType {
+        font-size: 20px;
+    }
+
+    .updateButton {
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 30px 15px 25px 15px;
+    }
+
+    .orderSection {
+        margin-bottom: 50px;
+        align-items: start;
+    }
+
+    .logoIcon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .logoIcon::before {
+        width: 24px;
+        height: 12px;
+    }
+
+    .logoIcon::after {
+        width: 12px;
+        height: 12px;
+        right: 6px;
+    }
+
+    .logo {
+        font-size: 50px;
+    }
+
+    .companyName,
+    .companyType {
+        font-size: 18px;
+    }
+
+    .socialIcons {
+        justify-content: flex-start;
+    }
+}
